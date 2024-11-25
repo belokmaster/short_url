@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"io/ioutil" // Для чтения тела запроса
+	"io"        // Для чтения тела запроса
 	"math/rand" // Для генерации случайных чисел
 	"net/http"  // Для создания HTTP-сервера
 	"sync"
@@ -62,7 +62,7 @@ func PostHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Чтение тела запроса
 	// io.ReadAll читает все данные из r.Body и возвращает их в виде среза байтов.
-	body, err := ioutil.ReadAll(r.Body)
+	body, err := io.ReadAll(r.Body)
 	if err != nil {
 		// Если возникла ошибка при чтении тела запроса, возвращается ошибка 400 (Bad Request).
 		http.Error(w, "Unable to read request body", http.StatusBadRequest)
