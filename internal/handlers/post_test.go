@@ -1,10 +1,9 @@
-package handlers_test
+package handlers
 
 import (
 	"io"
 	"net/http"
 	"net/http/httptest"
-	"short_url/internal/handlers"
 	"strings"
 	"testing"
 
@@ -48,7 +47,7 @@ func TestPostHandler(t *testing.T) {
 			w := httptest.NewRecorder()
 
 			// Обрабатываем запрос
-			handlers.PostHandler(w, request)
+			PostHandler(w, request)
 
 			result := w.Result()
 
